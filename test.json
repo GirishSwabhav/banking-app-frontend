@@ -1,0 +1,65 @@
+[
+    {
+        "firstName": "Rahul",
+        "lastName": "Sharma",
+        "phoneNumber": "9123456789",
+        "username": "rahul123",
+        "password": "rahul123"
+    },
+    {
+        "firstName": "Amit",
+        "lastName": "Verma",
+        "phoneNumber": "9765432109",
+        "username": "amit123",
+        "password": "amit123"
+    },
+    {
+        "firstName": "Sakshi",
+        "lastName": "Singh",
+        "phoneNumber": "9654321098",
+        "username": "sakshi123",
+        "password": "sakshi123"
+    },
+    {
+        "firstName": "Priya",
+        "lastName": "Gupta",
+        "phoneNumber": "9345678901",
+        "username": "priya123",
+        "password": "priya123"
+    },
+    {
+        "firstName": "Raj",
+        "lastName": "Kumar",
+        "phoneNumber": "9234567890",
+        "username": "raj123",
+        "password": "raj123"
+    },
+    {
+        "firstName": "Ravi",
+        "lastName": "Patel",
+        "phoneNumber": "9988776655",
+        "username": "ravi123",
+        "password": "ravi123"
+    },
+    {
+        "firstName": "Pooja",
+        "lastName": "Yadav",
+        "phoneNumber": "9154326789",
+        "username": "pooja123",
+        "password": "pooja123"
+    },
+    {
+        "firstName": "Simran",
+        "lastName": "Mehta",
+        "phoneNumber": "9012345678",
+        "username": "simran123",
+        "password": "simran123"
+    },
+    {
+        "firstName": "Rohit",
+        "lastName": "Jain",
+        "phoneNumber": "9208765432",
+        "username": "rohit123",
+        "password": "rohit123"
+    }
+]

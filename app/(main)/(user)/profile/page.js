@@ -2,6 +2,9 @@
 import React from "react";
 
 const Account = () => {
+
+    const { CustomTextInput } = require('@/app/(components)/customTextInput')
+
     return (
         <>
             {/* Tabs */}
@@ -22,38 +25,26 @@ const Account = () => {
                     {/* <button type="button" className="px-6 py-2 bg-black text-white rounded-md">Edit</button> */}
                 </div>
 
-                <div>
-                    <label className="block mb-2 text-neutral-700">First name</label>
-                    <input
-                        type="text"
-                        className="w-full px-3 py-2 border border-neutral-300 rounded-md"
-                        placeholder="John"
-                    />
-                </div>
-                <div>
-                    <label className="block mb-2 text-neutral-700">Last name</label>
-                    <input
-                        type="text"
-                        className="w-full px-3 py-2 border border-neutral-300 rounded-md"
-                        placeholder="Doe"
-                    />
-                </div>
-                {/* <div className="col-span-2">
-                        <label className="block mb-2 text-neutral-700">Email</label>
-                        <input
-                            type="email"
-                            className="w-full px-3 py-2 border border-neutral-300 rounded-md"
-                            placeholder="john@example.com"
-                        />
-                    </div> */}
+                <CustomTextInput
+                    label="First Name"
+                    type="text"
+                    placeholder="John"
+                />
+
+                <CustomTextInput
+                    label="Last Name"
+                    type="text"
+                    placeholder="Doe"
+                />
+
                 <div className="col-span-2">
-                    <label className="block mb-2 text-neutral-700">Phone number</label>
-                    <input
-                        type="text"
-                        className="w-full px-3 py-2 border border-neutral-300 rounded-md"
-                        placeholder="1111 222 333"
+                    <CustomTextInput
+                        label="Phone Number"
+                        type="tel"
+                        placeholder="986 9568 236"
                     />
                 </div>
+
                 <div className="col-span-2 mt-4">
                     <button
                         type="submit"

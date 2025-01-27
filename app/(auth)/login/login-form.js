@@ -6,6 +6,7 @@ import { login } from '@/lib/user';
 import { useRouter } from 'next/navigation';
 
 const LoginForm = () => {
+    const { CustomTextInput, CustomPasswordInput } = require('@/app/(components)/customTextInput')
     const {
         register,
         handleSubmit,
@@ -50,7 +51,10 @@ const LoginForm = () => {
         try {
             setIsSubmitting(true);
             const response = await login(data);
-            toast.success(response.message);
+            localStorage.setItem('role', response.data.data.isAdmin ? 'admin' : 'user')
+            localStorage.setItem('id', response.data.data.id)
+            localStorage.setItem('name', response.data.data.name)
+            toast.success(response.data.message ?? response.message);
             router.push('/dashboard');
         } catch (error) {
             toast.error(error.response?.data?.message ?? error.message ?? 'An error occurred');
@@ -62,44 +66,23 @@ const LoginForm = () => {
     return (
         <form className="flex flex-col gap-y-4 w-full" >
             <div className="flex flex-col">
-                <label htmlFor="account" className="text-neutral-950 mb-1">
-                    Username
-                </label>
-                <input
+                <CustomTextInput
+                    label="Username"
                     type="text"
-                    id="account"
-                    className={`border ${errors?.username ? 'border-red-500' : 'border-neutral-300'} rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary-500 mt-3`}
-                    placeholder="john.doe3"
-                    {...formSchema.username}
-                    required
+                    placeholder="Enter Username"
+                    formControl={formSchema.username}
+                    errors={errors?.username}
                 />
-                {errors?.username && (
-                    <p className="text-red-500 text-sm mt-1">{errors.username.message}</p>
-                )}
             </div>
             <div className="flex flex-col">
-                <label htmlFor="password" className="text-neutral-950 mb-1">
-                    Password
-                </label>
-                <div className="relative flex flex-col">
-                    <input
-                        type={showPassword ? "text" : "password"}
-                        id="password"
-                        className={`border ${errors?.password ? 'border-red-500' : 'border-neutral-300'} rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-primary-500 mt-3`}
-                        placeholder="********"
-                        {...formSchema.password}
-                        required
-                    />
-                    <button
-                        type="button"
-                        onClick={toggleShowPassword}
-                        className="absolute right-2 bottom-2 text-black"
-                    >Toggle
-                    </button>
-                </div>
-                {errors?.password && (
-                    <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
-                )}
+                <CustomPasswordInput
+                    label="Password"
+                    placeholder="Enter Password"
+                    formControl={formSchema.password}
+                    errors={errors?.password}
+                    showPassword={showPassword}
+                    toggleShowPassword={toggleShowPassword}
+                />
             </div>
             <button
                 type="submit"

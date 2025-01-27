@@ -2,12 +2,12 @@ import React from 'react'
 import Image from 'next/image'
 import LoginForm from './login-form';
 
-const Home = () => {
+const Login = () => {
     return (
         <>
             <div className="w-screen h-screen bg-slate-50 flex">
                 <div className="w-2/4 h-screen bg-slate-950 flex flex-col justify-center items-center">
-                    <Image src="/images/bg-home.png" alt="hero" width={400} height={100} />
+                    <Image src="/images/bg-home.png" alt="Home" width={400} height={100} />
                     <h1 className="text-3xl font-bold text-slate-200">Maxus is personal finance,</h1>
                     <h1 className="text-3xl font-bold text-slate-200">made simple</h1>
                     <p className="text-sm mt-3 text-slate-200">All your accounts and savings in one place</p>
@@ -32,4 +32,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Login

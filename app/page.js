@@ -1,10 +1,5 @@
-import React from 'react'
-import Home from './(components)/home/page'
-
-const Main = () => {
-  return (
-    <Home />
-  )
+const Home = () => {
+  return null
 }
 
-export default Main
+export default Home

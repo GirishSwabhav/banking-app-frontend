@@ -1,40 +1,49 @@
-import React from 'react'
+"use client"
+import React, { useEffect, useState } from 'react'
+import HomeIcon from '@mui/icons-material/Home';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import ReplyIcon from '@mui/icons-material/Reply';
+import SendIcon from '@mui/icons-material/Send';
+import CreditCardIcon from '@mui/icons-material/CreditCard';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const navItems = [
     {
         label: "Dashboard",
-        icon: "home",
-        link: "/user",
+        icon: <HomeIcon />,
+        link: "/dashboard",
         roles: ["admin", "user"],
     },
     {
         label: "Users",
-        icon: "receipt_long",
-        link: "/user/users",
+        icon: <PeopleAltIcon />,
+        link: "/users",
         roles: ["admin"],
     },
     {
         label: "Banks",
-        icon: "receipt_long",
-        link: "/user/banks",
+        icon: <AccountBalanceIcon />,
+        link: "/banks",
         roles: ["admin"],
     },
     {
         label: "Transfer",
-        icon: "swap_horiz",
-        link: "/user/transfer",
+        icon: <ReplyIcon />,
+        link: "/transfer",
         roles: ["user"],
     },
     {
         label: "Transactions",
-        icon: "receipt_long",
-        link: "/user/transactions",
+        icon: <SendIcon fontSize='small' />,
+        link: "/transactions",
         roles: ["user"],
     },
     {
         label: "Accounts",
-        icon: "receipt_long",
-        link: "/user/accounts",
+        icon: <CreditCardIcon />,
+        link: "/accounts",
         roles: ["user"],
     }
 ];
@@ -42,30 +51,36 @@ const navItems = [
 const accountItems = [
     {
         label: "Settings",
-        icon: "credit_card",
-        link: "/user/profile"
+        icon: <ManageAccountsIcon />,
+        link: "/profile"
     },
     {
         label: "Logout",
-        icon: "trending_up",
+        icon: <LogoutIcon />,
         link: "/logout"
     }
 ]
 
 const NavBar = () => {
-    const userRole = "admin";
+
+    const [userRole, setUserRole] = useState(null);
+    useEffect(() => {
+        const role = localStorage.getItem('role')
+        setUserRole(role)
+    })
+
     const filteredNavItems = navItems.filter(item => item.roles.includes(userRole));
 
     return (
         <nav className="bg-gray-200 w-1/5 h-full flex flex-col items-start justify-between pl-14 pt-10 pb-14">
             <div>
-                <h1 className="text-2xl text-black font-medium mb-10">Maxus</h1>
+                <h1 className="text-3xl text-black font-semibold mb-10">Maxus</h1>
                 <ul className="space-y-7">
                     {filteredNavItems.map((item, index) => {
                         return (
                             <li className="flex items-center text-neutral-600 font-medium text-sm" key={index}>
                                 <a href={item.link || ""} className="flex items-center space-x-3 hover:text-neutral-950 transition-colors">
-                                    <span className="material-symbols-outlined mr-3">home</span>
+                                    <span className="mr-2">{item.icon}</span>
                                     {item.label}
                                 </a>
                             </li>
@@ -78,8 +93,8 @@ const NavBar = () => {
                     {accountItems.map((item, index) => {
                         return (
                             <li className="flex items-center text-neutral-600 font-medium text-sm" key={index + navItems.length}>
-                                <a href={item.href || ""} className="flex items-center space-x-3 hover:text-neutral-950 transition-colors">
-                                    <span className="material-symbols-outlined mr-3">home</span>
+                                <a href={item.link || ""} className="flex items-center space-x-3 hover:text-neutral-950 transition-colors">
+                                    <span className="mr-2">{item.icon}</span>
                                     {item.label}
                                 </a>
                             </li>
